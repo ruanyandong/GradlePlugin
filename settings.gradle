@@ -1,0 +1,3 @@
+include ':StandardAlonePlugin'
+include ':app'
+rootProject.name = "GradlePlugin"

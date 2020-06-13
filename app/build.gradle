@@ -1,0 +1,54 @@
+//import com.wings.gradle.CustomBuildSrcPlugin
+
+apply plugin: 'com.android.application'
+// 使用脚本插件
+apply from:'../config.gradle'
+// 使用对象插件
+apply plugin: CustomGradlePlugin
+
+// 使用buildSrc目录下的对象插件   apply plugin:com.wings.gradle.CustomBuildSrcPlugin也可以这样使用
+//apply plugin: CustomBuildSrcPlugin
+// id映射的方式使用buildSrc目录下的对象插件
+apply plugin: 'CustomPlugin'
+
+apply plugin: 'myAlonePlugin'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.wings.gradleplugin"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+}
+
+// 定义对象插件
+class CustomGradlePlugin implements Plugin<Project>{
+    @Override
+    void apply(Project target) {
+        target.task("showCustomPlugin"){
+            doLast {
+                println("this is CustomGradlePlugin")
+            }
+        }
+    }
+}

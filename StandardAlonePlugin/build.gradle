@@ -1,0 +1,22 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+//以上都为固定写法
+//打包到本地或者远程Maven库
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.groupId = 'com.wings.plugin'   //groupId
+            pom.artifactId = 'standardAlonePlugin'  //artifactId
+            pom.version = '1.0.0' //版本号
+            //提交到本地服务器：
+            repository(url: uri('../alonePlugin'))
+
+        }
+    }
+}
+
+
