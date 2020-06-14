@@ -7,6 +7,7 @@
 
  首先在项目根目录下新建一个**config.gradle**文件，在该文件中定义所需的**task**,当然也可以在各自模块下创建，引用时注意路径即可。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2020061416274799.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0NjgxNTgw,size_16,color_FFFFFF,t_70)
+
 **config.gradle**的内容如下，这里定义了一个名为**scriptPlugin**的**task**，打印一段文本。
 
 ```java
